@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r266 | mackatack | 2014-07-18 07:35:25 +0000 (Fri, 18 Jul 2014) | 1 line
+Changed paths:
+   A /tags/0.6.52 (from /trunk:265)
+
+Fix for GP distribution
+------------------------------------------------------------------------
+r265 | mackatack | 2014-07-18 07:35:04 +0000 (Fri, 18 Jul 2014) | 1 line
+Changed paths:
+   M /trunk/ml/lootmaster_ml.lua
+
+Fix for GP distribution
+------------------------------------------------------------------------
+r263 | mackatack | 2014-06-20 16:00:32 +0000 (Fri, 20 Jun 2014) | 3 lines
+Changed paths:
+   M /trunk/lootmaster_core.lua
+   M /trunk/ml/lootmaster_ml.lua
+   M /trunk/ml/lootmaster_ml_ui.lua
+   A /trunk/tools
+   A /trunk/tools/tokens.html
+
+- Big change to the current equipment list. Now showing all items that correspond to a Token. So we're now showing up to 5 items on the master looter interface per candidate. Besides that now also the difference in itemlevel compared to the current item is displayed.
+- Another fix - though shotgun style - attempt for the EP/GP/PR ratings not showing for xrealm candidates.
+- Also added the tool to the repos for generating the token lookup array
+------------------------------------------------------------------------
