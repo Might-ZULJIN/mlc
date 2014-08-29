@@ -1,4 +1,5 @@
-﻿--[[
+--[[
+--TEST
 ]]
 
 local LootMaster    = LibStub("AceAddon-3.0"):GetAddon("EPGPLootMaster")
