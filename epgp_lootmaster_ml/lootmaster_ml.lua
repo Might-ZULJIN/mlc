@@ -1,4 +1,4 @@
-﻿--[[
+--[[
 	LootMaster, Master looter stuff
 ]]--
 
@@ -2266,3 +2266,104 @@ function LootMasterML:OPEN_MASTER_LOOT_LIST()
     end;
 
 end
+
+function LootMasterML:PARSE_WEB_DATA( s )
+  local startpoint = 1
+  local endpoint = 1
+  playerData = {}
+  statScore = {}  
+  
+  --Split string so that player data and stat data is separated.
+  endpoint = string.find(s, ";", startpoint)
+  playerString = string.sub(s, startpoint, endpoint)
+  startpoint = endpoint + 1
+  endpoint = string.find(s, ";", startpoint)
+  statString = string.sub(s, startpoint, endpoint)
+  
+  --Reset pointers
+  startpoint = 1
+  endpoint = 1
+  
+  --Find each element in playerString and put values in table
+  repeat
+    endpoint = string.find(playerString, ",", startpoint)
+    name = string.sub(playerString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(playerString, ",", startpoint)
+    class = string.sub(playerString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(playerString, ",", startpoint)
+    mainspec = string.sub(playerString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(playerString, ",", startpoint)
+    offspec = string.sub(playerString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(playerString, ",", startpoint)
+    attend = string.sub(playerString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(playerString, ",", startpoint)
+    --Catch to see if we are at end of the player string
+    if endpoint == nil then
+    endpoint = string.len(playerString)
+    end
+    lootd = string.sub(playerString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = endpoint + 1
+    
+    --Load the values found into player data table  
+    playerData[name] = {
+    ["class"] = class,  
+    ["mainspec"] = mainspec,  
+    ["offspec"] = offspec,    
+    ["attend"] = attend,
+    ["lootd"] = lootd 
+    }
+  until startpoint >= string.len(playerString)
+  
+  --Reset pointers
+  startpoint = 1
+  endpoint = 1
+  
+  --Find each element in statString and put values in table
+  repeat
+    endpoint = string.find(statString, ",", startpoint)
+    class = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(statString, ",", startpoint)
+    spec = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(statString, ",", startpoint)
+    crit = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(statString, ",", startpoint)
+    haste = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(statString, ",", startpoint)
+    mastery = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(statString, ",", startpoint)
+    multi = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = string.find(statString, ",", startpoint)
+    --Catch to see if we are at end of the player string
+    if endpoint == nil then
+      endpoint = string.len(statString)
+    end
+    versa = string.sub(statString, startpoint, endpoint-1)
+    startpoint = endpoint + 1
+    endpoint = endpoint + 1
+    
+    statScore[class] = {}
+
+    --Load the values found into stat score table  
+    statScore[class][spec] = {
+    ["crit"] = crit,  
+    ["haste"] = haste,  
+    ["mastery"] = mastery,    
+    ["multistrike"] = multi,
+    ["versatility"] = versa 
+    }
+  until startpoint >= string.len(statString)
+end
+
+
