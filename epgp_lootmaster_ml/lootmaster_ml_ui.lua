@@ -1,5 +1,4 @@
---[[
---TEST
+﻿--[[
 ]]
 
 local LootMaster    = LibStub("AceAddon-3.0"):GetAddon("EPGPLootMaster")
@@ -20,17 +19,20 @@ local sstScrollCols = {
        { ["name"] = "C.",					["width"] = 20,  ["align"] = "CENTER" },
        { ["name"] = L["Candidate"],			["width"] = 100, ["align"] = "LEFT" },
        { ["name"] = L["Rank"],				["width"] = 100, ["align"] = "LEFT" },
-       { ["name"] = L["Response"],			["width"] = 210, ["align"] = "LEFT", 	  	["defaultsort"] = "desc", ["sort"] = "desc", ["color"] = {["r"] = 0.25, ["g"] = 1.00, ["b"] = 0.25, ["a"] = 1.0 }, ["sortnext"]=10 }, --,
-       { ["name"] = "EP",					["width"] = 50,  ["align"] = "RIGHT",   	["color"] = epgpColor},
-       { ["name"] = "GP",					["width"] = 50,  ["align"] = "RIGHT",   	["color"] = epgpColor},
-       { ["name"] = "PR",					["width"] = 60,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortfirst"]=10, ["sortnext"]=8, ["ident"]="PR"},
+       { ["name"] = L["Response"],			["width"] = 150,  ["align"] = "LEFT", 	  	["defaultsort"] = "desc", ["sort"] = "desc", ["color"] = {["r"] = 0.25, ["g"] = 1.00, ["b"] = 0.25, ["a"] = 1.0 }, ["sortnext"]=10 }, --,
+		-- ep
+	   { ["name"] = "Overall",				["width"] = 85,  ["align"] = "RIGHT",   	["color"] = epgpColor},
+		-- gp
+	   { ["name"] = "StatScore",			["width"] = 85,  ["align"] = "RIGHT",   	["color"] = epgpColor},
+		-- pr
+	   { ["name"] = "Attend%",				["width"] = 85,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortfirst"]=10, ["sortnext"]=8, ["ident"]="PR", ["color"] = epgpColor},
+		-- roll
+       { ["name"] = "LootDensity",			["width"] = 85,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["color"] = epgpColor},
+		-- bid
+	   { ["name"] = L["Roll"],				["width"] = 45,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=7, ["color"] = epgpColor},
 
-       { ["name"] = L["Roll"],				["width"] = 35,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["color"] = epgpColor},
-	   { ["name"] = L["Bid"],				["width"] = 45,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=7},
 	   { ["name"] = L["Votes"],		        ["width"] = 45,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=12},
-
        { ["name"] = L["Note"],				["width"] = 30,  ["align"] = "RIGHT"},
-
        { ["name"] = " ",					["width"] = 5,   ["align"] = "LEFT",    	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=9},   -- Spacer, actually contains a check if someone matches MinEP, used for sorting purposes.
 
        { ["name"] = "s1",		          	["width"] = 34,  ["align"] = "CENTER", 		["bgcolor"] = gearBgColor },

@@ -1332,6 +1332,28 @@ function LootMasterML:ResponseSortValue(candidate, itemID)
     return self:GetCandidateData( itemID, candidate, 'responsesort')
 end
 
+
+-- Might Stuff
+function LootMasterML:GetOverall( player, itemID )
+	return itemID;
+end
+
+function LootMasterML:GetStatScore( player, itemID ) 
+	return 0;
+end
+
+function LootMasterML:GetAttendance( player )
+	return 100;
+end
+
+function LootMasterML:GetLootDensity( player )
+	return 1;
+end
+
+function LootMasterML:GetIlevelDiff( player, itemID )
+	return -10;
+end
+
 --[[
     Create a safe randomizer function that returns a float between 1 and 99
 ]]--
@@ -1447,24 +1469,27 @@ function LootMasterML:AddCandidate( loot, candidate )
           ["color"]      = self.GetCandidateCellColor,
           ["colorargs"]  = {self, candidate, itemID}},
 
-          {["name"]       = 'EP',
-          ["value"]      = self.GetEP,
-          ["userDraw"]   = addon.SetCellEPGPNumberFormatted,
-		  ["color"]      = self.GetCandidateEPCellColor,
-		  ["colorargs"]  = {self, candidate, itemID},
-          ["args"]       = {self, candidate, self.GetEP}},
+          {["name"]       = 'Overall', -- EP
+          ["value"]      = self.GetOverall,
+          --["userDraw"]   = addon.SetCellEPGPNumberFormatted,
+          ["args"]       = {self, candidate, itemID}},
 
-          {["name"]       = 'GP',
-          ["value"]      = self.GetGP,
-          ["userDraw"]   = addon.SetCellEPGPNumberFormatted,
-          ["args"]       = {self, candidate, self.GetGP}},
+          {["name"]       = 'StatScore', -- GP
+          ["value"]      = self.GetStatScore,
+          --["userDraw"]   = addon.SetCellEPGPNumberFormatted,
+          ["args"]       = {self, candidate, itemID}},
 
-          {["name"]       = 'PR',
-          ["value"]      = self.GetPR,
-          ["userDraw"]   = addon.SetCellEPGPNumberFormatted,
-          ["args"]       = {self, candidate, self.GetPR}},
+          {["name"]       = 'Attend', -- PR
+          ["value"]      = self.GetAttendance,
+          --["userDraw"]   = addon.SetCellEPGPNumberFormatted,
+          ["args"]       = {self, candidate}},
 
-          {["name"]       = 'roll',
+		  {["name"]       = 'LootDensity', -- roll
+          ["value"]      = self.GetLootDensity,		  
+          --["userDraw"]   = addon.SetCandidateBidCellUserDraw,
+          ["args"]       = {self, candidate}},		  
+		  
+          {["name"]       = 'roll', -- Bid
           ["value"]      = randomRoll,
           ["userDraw"]   = addon.SetCandidateRollCellUserDraw,
           ["onenter"]    = addon.ShowRollCellPopup,
@@ -1472,15 +1497,6 @@ function LootMasterML:AddCandidate( loot, candidate )
           ["onenterargs"]= { self,candidate,itemID },
           ["onleaveargs"]= { self,candidate,itemID },
           ["args"]       = {self, candidate, itemID}},
-
-		  {["name"]       = 'bid',
-          ["value"]      = 0,
-          ["userDraw"]   = addon.SetCandidateBidCellUserDraw,
-          ["onenter"]    = addon.ShowBidCellPopup,
-          ["onleave"]    = addon.HideGearCellPopup,
-          ["onenterargs"]= {self,candidate,itemID},
-          ["onleaveargs"]= {self,candidate,itemID},
-          ["args"]       = {self,candidate,itemID}},
 
 		  {["name"]       = 'voteCol',
           ["value"]      = self.GetVoteValue,
