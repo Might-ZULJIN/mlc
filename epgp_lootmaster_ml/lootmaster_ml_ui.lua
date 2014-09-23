@@ -15,7 +15,35 @@ local LOOTBUTTON_PADDING = 6
 local gearBgColor   = {["r"] = 0.15, ["g"] = 0.15, ["b"] = 0.15, ["a"] = 1.0 }
 local epgpColor     = {["r"] = 0.45, ["g"] = 0.45, ["b"] = 0.45, ["a"] = 1.0 }
 
+—- CJM: This is the original code for the ML table. No longer needed.
+—-local sstScrollCols = {
+—-       { ["name"] = "C.",					["width"] = 20,  ["align"] = "CENTER" },
+—-       { ["name"] = L["Candidate"],			["width"] = 100, ["align"] = "LEFT" },
+—-       { ["name"] = L["Rank"],				["width"] = 100, ["align"] = "LEFT" },
+—-       { ["name"] = L["Response"],			["width"] = 210, ["align"] = "LEFT", 	  	["defaultsort"] = "desc", ["sort"] = "desc", ["color"] = {["r"] = 0.25, ["g"] = 1.00, ["b"] = 0.25, ["a"] = 1.0 }, ["sortnext"]=10 }, --,
+—-       { ["name"] = "EP",					["width"] = 50,  ["align"] = "RIGHT",   	["color"] = epgpColor},
+—-       { ["name"] = "GP",					["width"] = 50,  ["align"] = "RIGHT",   	["color"] = epgpColor},
+—-       { ["name"] = "PR",					["width"] = 60,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortfirst"]=10, ["sortnext"]=8, ["ident"]="PR"},
+
+-—      { ["name"] = L["Roll"],				["width"] = 35,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["color"] = epgpColor},
+—-	   { ["name"] = L["Bid"],				["width"] = 45,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=7},
+—-	   { ["name"] = L["Votes"],		        ["width"] = 45,  ["align"] = "RIGHT",   	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=12},
+
+—-       { ["name"] = L["Note"],				["width"] = 30,  ["align"] = "RIGHT"},
+
+—-       { ["name"] = " ",					["width"] = 5,   ["align"] = "LEFT",    	["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=9},   -- Spacer, actually contains a check if someone matches MinEP, used for sorting purposes.
+
+—-       { ["name"] = "s1",		          	["width"] = 34,  ["align"] = "CENTER", 		["bgcolor"] = gearBgColor },
+—-       { ["name"] = "s2",		          	["width"] = 34,  ["align"] = "CENTER", 		["bgcolor"] = gearBgColor },
+—-       { ["name"] = "s3",		          	["width"] = 34,  ["align"] = "CENTER", 		["bgcolor"] = gearBgColor },
+—-       { ["name"] = "s4",		          	["width"] = 34,  ["align"] = "CENTER",  	["bgcolor"] = gearBgColor },
+—-	   { ["name"] = "s5",		          	["width"] = 34,  ["align"] = "CENTER", 		["bgcolor"] = gearBgColor },
+—-      { ["name"] = " ",		          	["width"] = 5,   ["align"] = "LEFT",    	["bgcolor"] = gearBgColor }
+—-}
+
+—- CJM: WIP - This is the new code for the new table format.
 local sstScrollCols = {
+<<<<<<< HEAD
        { ["name"] = "C.",					["width"] = 20,  ["align"] = "CENTER" },
        { ["name"] = L["Candidate"],			["width"] = 100, ["align"] = "LEFT" },
        { ["name"] = L["Rank"],				["width"] = 100, ["align"] = "LEFT" },
@@ -41,6 +69,24 @@ local sstScrollCols = {
        { ["name"] = "s4",		          	["width"] = 34,  ["align"] = "CENTER",  	["bgcolor"] = gearBgColor },
 	   { ["name"] = "s5",		          	["width"] = 34,  ["align"] = "CENTER", 		["bgcolor"] = gearBgColor },
        { ["name"] = " ",		          	["width"] = 5,   ["align"] = "LEFT",    	["bgcolor"] = gearBgColor }
+=======
+	{ ["name"] = "C.",		["width"] = 20,  ["align"] = "CENTER" },
+	{ ["name"] = L["Candidate"],	["width"] = 100, ["align"] = "LEFT" },
+	{ ["name"] = L["Rank"],		["width"] = 100, ["align"] = "LEFT" },
+	{ ["name"] = L["Response"],	["width"] = 210, ["align"] = "LEFT",	["defaultsort"] = "desc", ["sort"] = "desc", ["color"] = {["r"] = 0.25, ["g"] = 1.00, ["b"] = 0.25, ["a"] = 1.0 }, ["sortnext"]=10 }, --,
+	{ ["name"] = “ilvl”,		["width"] = 50,  ["align"] = “CENTER”,  ["color"] = epgpColor},
+	{ ["name"] = “StatScore”,	["width"] = 50,  ["align"] = “CENTER”,  ["color"] = epgpColor},
+	{ ["name"] = “Attendance”,	["width"] = 60,  ["align"] = "RIGHT",   ["defaultsort"] = "asc", ["sort"] = "asc", ["sortfirst"]=10, ["sortnext"]=8, ["ident"]="PR"},
+	{ ["name"] = L["Vetoes"],	["width"] = 45,  ["align"] = "RIGHT",   ["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=12},
+	{ ["name"] = L["Note"],		["width"] = 30,  ["align"] = "RIGHT"},
+	{ ["name"] = " ",		["width"] = 5,   ["align"] = "LEFT",    ["defaultsort"] = "asc", ["sort"] = "asc", ["sortnext"]=9},   -- Spacer, actually contains a check if someone matches MinEP, used for sorting purposes.
+	{ ["name"] = "s1",		["width"] = 34,  ["align"] = "CENTER", 	["bgcolor"] = gearBgColor },
+	{ ["name"] = "s2",		["width"] = 34,  ["align"] = "CENTER", 	["bgcolor"] = gearBgColor },
+	{ ["name"] = "s3",		["width"] = 34,  ["align"] = "CENTER", 	["bgcolor"] = gearBgColor },
+	{ ["name"] = "s4",		["width"] = 34,  ["align"] = "CENTER",  ["bgcolor"] = gearBgColor },
+	{ ["name"] = "s5",		["width"] = 34,  ["align"] = "CENTER", 	["bgcolor"] = gearBgColor },
+	{ ["name"] = " ",		["width"] = 5,   ["align"] = "LEFT",    ["bgcolor"] = gearBgColor }
+>>>>>>> origin/master
 }
 
 function LootMasterML:ShowInfoPopup( ... )
